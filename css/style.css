@@ -1,0 +1,319 @@
+body {
+    background-color: #0D0D0D;
+    color: #f9f6f6;
+    overflow-x: hidden;
+    position: relative;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font stack */
+}
+
+/* Fixed Left Control Panel (White) */
+.control-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px; /* Width as per visual reference */
+    height: 100vh;
+    background-color: #FFFFFF;
+    z-index: 1001; /* Ensures it's above the nav-menu */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: space-between; /* Space out logo, toggle, social icons */
+}
+
+.control-panel .logo-container {
+    padding-top: 1.5rem; 
+}
+
+.control-logo {
+    max-width: 35px;
+}
+
+.toggle-icon-container {
+    cursor: pointer;
+    /* This container is part of the flex layout of control-panel */
+}
+
+.toggle-icon {
+    color: #000000; /* Black icon (bars/X) */
+    font-size: 1.5rem; /* Adjust size as needed */
+}
+
+.control-social-icons {
+    padding-bottom: 1.5rem;
+}
+
+.control-social-icons a i {
+    color: #000000; /* Black icons */
+    font-size: 1rem;
+}
+
+/* Sliding Navigation Menu (Black) */
+.nav-menu {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden off-screen to the left */
+    width: 250px;
+    height: 100vh;
+    background-color: #000000;
+    z-index: 1000; /* Below control panel */
+    transition: left 0.4s ease-in-out; /* Smooth transition */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0; /* Add some padding top/bottom */
+}
+
+.nav-menu.open {
+    left: 60px; /* Slides in to start exactly after the 60px control panel */
+}
+
+.nav-menu .nav-links {
+    flex-grow: 1;
+    margin-top: 1rem; /* Space above links */
+}
+
+.nav-menu .nav-links li a {
+    color: #f9f6f6;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    display: block;
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.2s ease;
+    text-align: left;
+}
+
+.nav-menu .nav-links li a:hover {
+    color: #ffc107; /* Yellow hover for links */
+}
+
+.menu-footer {
+    color: #f9f6f6;
+    font-size: 0.75rem; /* Slightly smaller footer text */
+    padding: 1rem 1.5rem; /* Match link padding */
+    text-align: left;
+}
+
+.social-icons-menu a i {
+    color: #f9f6f6;
+    margin-right: 0.75rem; /* Space between social icons in menu */
+}
+
+.copyright {
+    color: #adb5bd;
+    margin-top: 0.5rem;
+}
+
+/* Main Content Adjustments */
+.main-content {
+    padding: 20px;
+    margin-left: 60px; /* Space for the fixed control panel */
+}
+
+/* Meal Item Styling (remains largely the same) */
+.meal-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.meal-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.meal-item:hover img {
+    transform: scale(1.05);
+}
+
+.meal-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #0D0D0D;
+    padding: 1rem;
+    text-align: center;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.meal-item:hover .meal-overlay {
+    transform: translateY(0);
+}
+
+.meal-overlay h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+/* Loading spinner styles */
+.loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(13, 13, 13, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Search, Categories, Area, Ingredients, Contact sections styling */
+.search-container,
+.categories-container,
+.area-container,
+.ingredients-container,
+.contact-container {
+    padding: 2rem 0;
+}
+
+.form-control::placeholder {
+    color: #A6A6A6;
+}
+
+.form-control {
+    background-color: transparent;
+    border: 1px solid #A6A6A6;
+    color: white;
+}
+
+.form-control:focus {
+    background-color: transparent;
+    border-color: white;
+    color: white;
+    box-shadow: none;
+}
+
+.category-item, .area-item, .ingredient-item {
+    background-color: transparent; 
+    border-radius: 0.25rem;
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: #f9f6f6;
+    border: 1px solid #333;
+}
+
+.category-item:hover, .area-item:hover, .ingredient-item:hover {
+    background-color: #ffc107;
+    color: #0D0D0D;
+    border-color: #ffc107;
+}
+
+.category-item img {
+    max-height: 100px; 
+    object-fit: cover;
+    border-radius: 0.25rem;
+}
+
+.category-item i, .area-item i, .ingredient-item i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.category-item h4, .area-item h4, .ingredient-item h4 {
+    color: inherit;
+    font-size: 1.2rem;
+}
+
+.category-item p, .area-item p, .ingredient-item p {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+    color: #AEAEAE;
+}
+
+.category-item:hover p, .area-item:hover p, .ingredient-item:hover p {
+    color: #0D0D0D;
+}
+
+/* Meal Details Section */
+.meal-details-content {
+    padding: 2rem 0;
+}
+
+.meal-details-content img {
+    border-radius: 0.5rem;
+}
+
+.meal-details-content h2 {
+    font-weight: 700;
+}
+
+.meal-details-content .instructions {
+    line-height: 1.8;
+}
+
+.meal-details-content .tags span, .meal-details-content .recipes li {
+    background-color: #F8D7DA;
+    color: #721C24;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.25rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+    font-size: 0.9rem;
+}
+
+.meal-details-content .recipes li {
+    background-color: #CFF4FC;
+    color: #055160;
+}
+
+.btn-source, .btn-youtube {
+    color: white !important; 
+}
+.btn-source {
+    background-color: #28A745;
+    border-color: #28A745;
+}
+
+.btn-youtube {
+    background-color: #DC3545;
+    border-color: #DC3545;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-menu {
+        width: 220px; 
+        left: -220px;
+    }
+    .nav-menu.open {
+        left: 60px;
+    }
+    .main-content {
+        margin-left: 60px;
+    }
+    .meal-overlay h3 {
+        font-size: 1.2rem;
+    }
+}
+
