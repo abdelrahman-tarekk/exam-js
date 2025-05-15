@@ -1,12 +1,11 @@
 $(document).ready(function() {
-    // --- Configuration ---
     const API_BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
     const MEALS_GRID = $("#mealsGrid");
-    const NAV_MENU = $(".nav-menu"); // The black sliding menu
-    const TOGGLE_ICON_ELEMENT = $(".control-panel .toggle-icon"); // The <i> element for bars/X icon
-    const TOGGLE_ICON_CONTAINER = $(".control-panel .toggle-icon-container"); // The clickable container in the white panel
-    const NAV_LINKS_ITEMS = $(".nav-menu .nav-links li"); // For animation
-    const NAV_LINKS_ANCHORS = $(".nav-menu .nav-links a"); // For click handling
+    const NAV_MENU = $(".nav-menu");
+    const TOGGLE_ICON_ELEMENT = $(".control-panel .toggle-icon");
+    const TOGGLE_ICON_CONTAINER = $(".control-panel .toggle-icon-container");
+    const NAV_LINKS_ITEMS = $(".nav-menu .nav-links li");
+    const NAV_LINKS_ANCHORS = $(".nav-menu .nav-links a");
     const LOGO_IMG_PATH = "images/logo.png"; 
 
     // --- Sidebar Toggle --- 
@@ -67,11 +66,10 @@ $(document).ready(function() {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            // Return the relevant part of the data based on the endpoint
             if (endpoint === "categories.php") {
                 return data.categories; 
             } else {
-                return data.meals; // Default for meals, areas, ingredients (which are under 'meals' key in their respective list endpoints)
+                return data.meals;
             }
         } catch (error) {
             console.error("Error fetching data:", error);
@@ -409,3 +407,4 @@ $(document).ready(function() {
     }
 });
 
+//////////////////////////////////////////////////////////THE END/////////////////////////////////////////////////////

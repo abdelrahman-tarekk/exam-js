@@ -1,6 +1,0 @@
-- [X] Design the static website structure (folder structure, initial files, HTML structure).
-- [X] Implement the HTML layout with Bootstrap (created index.html with Bootstrap).
-- [X] Style the website with custom CSS to match the reference site.
-- [X] Add JavaScript for interactivity (e.g., fetching and displaying meals, sidebar animations).
-- [X] Validate that the cloned website visually and functionally matches the reference site.
-- [X] Prepare and send all website files (HTML, CSS, JavaScript, images) to the user.
